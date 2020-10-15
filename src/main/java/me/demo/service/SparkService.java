@@ -17,8 +17,6 @@ import org.apache.spark.api.java.JavaSparkContext;
 
 public class SparkService implements Serializable {
     private static final Logger logger = LoggerFactory.getLogger(SparkService.class);
-    
-    // private static final Pattern SPACE = Pattern.compile(" ");
 
     @Autowired
     private transient JavaSparkContext sc;
@@ -32,9 +30,7 @@ public class SparkService implements Serializable {
     }
 
     private JavaPairRDD<String, Integer> wordCount(JavaRDD<String> data) {
-        return data
-            .mapToPair(s -> new Tuple2<>(s, 1))
-            .reduceByKey((i1, i2) -> i1 + i2);
+        return data.mapToPair(s -> new Tuple2<>(s, 1)).reduceByKey((i1, i2) -> i1 + i2);
     }
 
     private List<Tuple2<String, Integer>> topK(JavaPairRDD<String, Integer> data, int k) {
