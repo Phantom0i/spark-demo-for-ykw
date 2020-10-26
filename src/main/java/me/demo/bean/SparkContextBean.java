@@ -19,7 +19,13 @@ public class SparkContextBean {
     @Bean
     @ConditionalOnMissingBean(SparkConf.class)
     public SparkConf sparkConf() {
-	   return new SparkConf().setAppName(appName).setMaster(master);
+       return new SparkConf()
+        .setAppName(appName)
+        .setMaster(master);
+        // .setJars(new String[]{
+        //     "/home/zhangjianglan/workspace/spark-test/target/spark-test-1.0.jar"})
+        // .set("spark.executor.extraClassPath", "/home/zhangjianglan/workspace/spark-test/target/lib/*")
+        // .set("spark.driver.extraClassPath", "/home/zhangjianglan/workspace/spark-test/target/lib/*");
     }
 
     @Bean
