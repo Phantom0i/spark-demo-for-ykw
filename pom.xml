@@ -55,10 +55,10 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.1</version> <!--maven-compiler-plugin版本写一个中央仓库有的版本，保存后它会自动下载 -->
                 <configuration>
-                    <source>11</source> <!--我的jdk是10.0.1的，写成10.0.1不好用，所以就写成10了 -->
-                    <target>11</target>
+                    <source>8</source> <!--我的jdk是10.0.1的，写成10.0.1不好用，所以就写成10了 -->
+                    <target>8</target>
                 </configuration>
-            </plugin>
+            </plugin> 
 
             <plugin>
                 <!-- Build an executable JAR -->
@@ -75,7 +75,14 @@
                     </archive>
                 </configuration>
             </plugin>
-
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
