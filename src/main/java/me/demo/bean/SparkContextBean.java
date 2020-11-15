@@ -14,7 +14,7 @@ public class SparkContextBean {
 
     private String appName = "WordFrequencyStatistic";
 
-    private String master = "spark://study4.zhangjianglan.ws2.wh-a.brainpp.cn:7077";
+    private String master = "local[*]";
 
     @Bean
     @ConditionalOnMissingBean(SparkConf.class)
