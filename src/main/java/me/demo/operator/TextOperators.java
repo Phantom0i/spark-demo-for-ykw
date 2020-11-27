@@ -4,6 +4,8 @@ package me.demo.operator;
 import scala.Serializable;
 import scala.Tuple2;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import com.huaban.analysis.jieba.JiebaSegmenter.SegMode;
 import com.huaban.analysis.jieba.JiebaSegmenter;
 import com.huaban.analysis.jieba.SegToken;
@@ -14,6 +16,7 @@ import org.apache.spark.api.java.JavaRDD;
 import java.util.Comparator;
 import java.util.List;
 
+
 public class TextOperators implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -21,7 +24,11 @@ public class TextOperators implements Serializable {
         return data.flatMap(s -> {
             JiebaSegmenter segmenter = new JiebaSegmenter();
             List<SegToken> segs = segmenter.process(s, SegMode.SEARCH);
-            return segs.stream().map(seg -> seg.word).collect(Collectors.toList()).iterator();
+            Stream<String> rawWords = segs.stream().map(seg -> seg.word);
+            return StopWordsFilter.getInstance()
+                .filter(rawWords)
+                .collect(Collectors.toList())
+                .iterator();
         });
     }
 
