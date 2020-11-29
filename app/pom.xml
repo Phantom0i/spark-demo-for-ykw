@@ -4,32 +4,22 @@
     http://maven.apache.org/xsd/maven-4.0.0.xsd">
  
     <parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.3.4.RELEASE</version>
-	</parent>
-
+        <groupId>me.demo</groupId>
+        <artifactId>spark-test</artifactId>
+        <version>1.0</version>
+    </parent>
     <modelVersion>4.0.0</modelVersion>
-    <groupId>me.demo</groupId>
-    <artifactId>spark-test</artifactId>
-    <name>demo</name>
-    <version>1.0</version>
-    <packaging>pom</packaging>
-
-    <modules>
-        <module>app</module>
-        <module>operator</module>
-    </modules>
-    
-    <properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>1.8</java.version>
-		<scala.version>2.12</scala.version>
-		<spark.version>3.0.1</spark.version>
-	</properties>
+    <artifactId>spark-test-app</artifactId>
+    <name>app</name>
+    <packaging>jar</packaging>
 
     <dependencies>
+        <dependency>
+            <groupId>me.demo</groupId>
+            <artifactId>spark-test-operator</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
         <!-- spring boot -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -56,11 +46,14 @@
             <artifactId>spark-hive_${scala.version}</artifactId>
             <version>${spark.version}</version>
         </dependency>
-        <!-- jieba -->
-        <dependency>
-            <groupId>com.huaban</groupId>
-            <artifactId>jieba-analysis</artifactId>
-            <version>1.0.2</version>
-        </dependency>
     </dependencies>
+
+    <build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+		</plugins>
+	</build>
 </project>

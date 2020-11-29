@@ -16,7 +16,6 @@ public class StopWordsFilter {
         InputStream is = classloader.getResourceAsStream(STOP_WORD_RESOURCE_NAME);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
         reader.lines().forEach(line -> stopWords.add(line.trim()));
-        System.out.printf("loaded %d stop words.\n", stopWords.size());
     }
 
     private static class Holder {

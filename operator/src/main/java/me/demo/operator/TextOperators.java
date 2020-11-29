@@ -1,20 +1,20 @@
 
 package me.demo.operator;
 
-import scala.Serializable;
-import scala.Tuple2;
+import java.io.Serializable;
+import java.util.Comparator;
+import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import com.huaban.analysis.jieba.JiebaSegmenter.SegMode;
 import com.huaban.analysis.jieba.JiebaSegmenter;
+import com.huaban.analysis.jieba.JiebaSegmenter.SegMode;
 import com.huaban.analysis.jieba.SegToken;
 
 import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaRDD;
 
-import java.util.Comparator;
-import java.util.List;
+import scala.Tuple2;
 
 
 public class TextOperators implements Serializable {

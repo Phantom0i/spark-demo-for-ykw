@@ -21,25 +21,17 @@ public class App
 	@Bean
 	public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
 		return args -> {
-
-			System.out.println("Let's inspect the beans provided by Spring Boot:");
-
 			String[] beanNames = ctx.getBeanDefinitionNames();
 			Arrays.sort(beanNames);
-			for (String beanName : beanNames) {
-				System.out.println(beanName);
-			}
+			// for (String beanName : beanNames) {
+			// 	System.out.println(beanName);
+			// }
 
 		};
     }
 
     @Bean
     public WebServerFactoryCustomizer<ConfigurableWebServerFactory> webServerFactoryCustomizer(){
-        return new WebServerFactoryCustomizer<ConfigurableWebServerFactory>() {
-            @Override
-            public void customize(ConfigurableWebServerFactory factory) {
-                factory.setPort(8089);
-            }
-        };
+		return factory -> factory.setPort(8089);
     }
 }
