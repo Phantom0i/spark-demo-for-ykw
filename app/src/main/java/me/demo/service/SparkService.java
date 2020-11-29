@@ -1,6 +1,5 @@
 package me.demo.service;
 
-import java.util.Arrays;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,7 +12,8 @@ import org.apache.spark.api.java.JavaSparkContext;
 
 @Service
 public class SparkService implements Serializable {
-    private static final Logger logger = LoggerFactory.getLogger(SparkService.class);
+    private static final long serialVersionUID = 1L;
+    private static final transient Logger logger = LoggerFactory.getLogger(SparkService.class);
 
     @Autowired
     private transient JavaSparkContext sc;
